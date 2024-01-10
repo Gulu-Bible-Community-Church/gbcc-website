@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from './layout/Layout';
-import { Dashboard } from './pages';
+import { Dashboard, Donation } from './pages';
 
 function App() {
 
@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Dashboard />} />
+          <Route path="give-to-gbcc" element={<Donation />} />
           {/* <Route path="/about-us" element={<AboutUs />} />
           <Route path="/upcoming-events" element={<UpcomingEvents />} />
           <Route path="/upcoming-events/:id" element={<SingleEvent />} />
