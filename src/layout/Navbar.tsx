@@ -17,7 +17,7 @@ const Navbar = () => {
 	}, []);
 
 	return (
-		<div className="flex items-center justify-between lg:px-10 md:px-8 px-4 pt-4 pb-4 bg-[#D67314]">
+		<div className="fixed w-full z-10 mb-24 flex items-center justify-between lg:px-10 md:px-8 px-4 pt-4 pb-4 bg-[#D67314]">
 			<Link to='/' className="relative z-10">
 				<img src={logo} alt="gbcc_logo" className="lg:w-24 md:w-16 w-16" />
 				{showXmassCap &&

@@ -1,2 +1,11 @@
 export { default as Dashboard } from './dashboard';
 export { default as Donation } from './donation';
+export { default as AboutUs } from './about-us';
+export { default as Leadership } from './leadership';
+export { default as ChurchServices } from './church-services';
+export { default as ChurchMinistries } from './church-ministries';
+export { default as UpcomingEvents } from './upcoming-events';
+export { default as Insights } from './insights';
+export { default as WatchSermons } from './sermons';
+export { default as Contact } from './contact';
+export { default as NotFound } from './notfound';
