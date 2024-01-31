@@ -39,16 +39,46 @@ const MobileView = () => {
 							</div>
 							<hr />
 							<div className="text-lg text-white mt-10 flex flex-col">
-								<Link to='/'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>Home</Link>
-								<Link to='/about-us'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>About Us</Link>
-								<Link to='/our-leadership'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>Our Leadership</Link>
-								<Link to='/church-services'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>Church Services</Link>
-								<Link to='/church-ministries'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>Church Ministries</Link>
-								<Link to='/upcoming-events'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>Upcoming Events</Link>
-								<Link to='/insights'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>Insights</Link>
-								<Link to='/watch-sermons'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>Watch Sermons</Link>
-								<Link to='/contact-us'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>Contact Us</Link>
-								<Link to='/give-to-gbcc'><span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>Give 2 GBCC</Link>
+								<Link to='/' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									Home
+								</Link>
+								<Link to='/about-us' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									About Us
+								</Link>
+								<Link to='/our-leadership' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									Our Leadership
+								</Link>
+								<Link to='/church-services' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									Church Services
+								</Link>
+								<Link to='/church-ministries' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									Church Ministries
+								</Link>
+								<Link to='/upcoming-events' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									Upcoming Events
+								</Link>
+								<Link to='/insights' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									Insights
+								</Link>
+								<Link to='/watch-sermons' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									Watch Sermons
+								</Link>
+								<Link to='/contact-us' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									Contact Us
+								</Link>
+								<Link to='/give-to-gbcc' onClick={() => setShowSidebar(!showSidebar)}>
+									<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+									Give 2 GBCC
+								</Link>
 							</div>
 
 							<div className="absolute bottom-1 text-white text-sm">
