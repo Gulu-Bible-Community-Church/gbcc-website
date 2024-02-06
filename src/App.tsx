@@ -2,8 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from './layout/Layout';
-import { AboutUs, ChurchMinistries, ChurchServices, Dashboard, Donation, Insights, Leadership, NotFound, UpcomingEvents, WatchSermons } from './pages';
-import { Contact } from 'lucide-react';
+import { AboutUs, ChurchMinistries, ChurchServices, Contact, Dashboard, Donation, Insights, Leadership, NotFound, UpcomingEvents, WatchSermons } from './pages';
 
 function App() {
 

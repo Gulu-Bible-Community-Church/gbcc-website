@@ -1,14 +1,14 @@
-import AboutUsCard from "@/components/ui/home/AboutUsCard"
-import BannerSection from "@/components/ui/home/BannerSection"
-import BlogSection from "@/components/ui/home/BlogSection"
-import ChurchServiceCard from "@/components/ui/home/ChurchServiceCard"
-import EventCard from "@/components/ui/home/EventCard"
-import LivesteamCard from "@/components/ui/home/LivesteamCard"
+import AboutUsCard from "@/components/home/AboutUsCard"
+import BannerSection from "@/components/home/BannerSection"
+import BlogSection from "@/components/home/BlogSection"
+import ChurchServiceCard from "@/components/home/ChurchServiceCard"
+import EventCard from "@/components/home/EventCard"
+import LivesteamCard from "@/components/home/LivesteamCard"
 
 
 const Dashboard = () => {
   return (
-    <main>
+    <main className="w-full">
       <BannerSection />
       <ChurchServiceCard />
       <AboutUsCard />

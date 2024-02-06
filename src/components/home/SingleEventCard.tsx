@@ -5,14 +5,14 @@ import TextTruncate from 'react-text-truncate'
 const SingleEventCard = () => {
 	return (
 		<>
-			<div className='lg:space-y-3 space-y-4'>
+			<div className='lg:space-y-3 md:space-y-10 space-y-4'>
 				{insightData.slice(0, 2)?.map(item => (
 					<Link
 						to="#"
-						className="flex lg:flex-row flex-col items-center bg-[#2A385E] md:w-[800px] w-[400px] lg:h-[230px] h-[450px]  rounded-lg  cursor-pointer"
+						className="flex lg:flex-row md:flex-row  flex-col items-center bg-[#2A385E] lg:w-[800px] md:w-[750px] w-full  px-4 lg:h-[230px] md:h-[210px] h-[450px]  rounded-lg  cursor-pointer lg:pt-0 md:pt-24  pt-0"
 						key={item._id}
 					>
-						<div className='md:w-[950px] w-[380px] md:h-[370px] h-[430px] flex items-center lg:mt-0 -mt-20'>
+						<div className='lg:w-[990px] md:w-[960px] w-[300px] lg:h-[400px] md:h-[350px] h-[430px] flex items-center lg:mt-0 -mt-20 '>
 							<img src={item.image[0]} alt="" className='object-contain   rounded-l-lg' />
 						</div>
 						<div className='px-2 text-white lg:mt-0 -mt-20'>

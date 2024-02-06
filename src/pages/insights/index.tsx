@@ -1,8 +1,13 @@
+import InsightBanner from "@/components/insight/InsightBanner"
+import InsightSection from "@/components/insight/InsightSection"
 
 
 const Insights = () => {
   return (
-	<div>Insights</div>
+	<div>
+    <InsightBanner />
+    <InsightSection />
+  </div>
   )
 }
 

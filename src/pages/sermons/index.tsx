@@ -1,8 +1,13 @@
+import SermonBanner from "@/components/sermons/SermonBanner"
+import SermonSection from "./SermonSection"
 
 
 const WatchSermons = () => {
   return (
-	<div>WatchSermons</div>
+    <div>
+      <SermonBanner />
+      <SermonSection />
+    </div>
   )
 }
 

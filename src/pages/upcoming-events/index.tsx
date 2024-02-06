@@ -1,7 +1,12 @@
+import EventBanner from "@/components/events/EventBanner"
+import EventSection from "./EventSection"
 
 const UpcomingEvents = () => {
   return (
-	<div>UpcomingEvents</div>
+	<div>
+    <EventBanner />
+    <EventSection />
+  </div>
   )
 }
 
