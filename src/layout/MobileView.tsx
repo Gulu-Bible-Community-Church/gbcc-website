@@ -3,11 +3,11 @@ import { AiOutlineClose } from "react-icons/ai";
 import { HiMenuAlt3 } from "react-icons/hi";
 import logo from '/logo.png'
 import { Link } from "react-router-dom";
-import { navbarApi } from "@/data/data";
+import { currentYear, navbarApi } from "@/data/data";
 
 const MobileView = () => {
 	const [showSidebar, setShowSidebar] = useState(false);
-	const currentYear = new Date().getFullYear();
+	
 
 
 	return (
@@ -36,10 +36,10 @@ const MobileView = () => {
 						<div className="">
 							<div className="flex items-center gap-2 justify-center">
 								<img src={logo} alt="" className="w-16 pt-4 pb-4" />
-								<p className="text-white font-semibold text-lg">GULU BIBLE COMMUNITY CHURCH</p>
+								<p className="text-white font-semibold text-sm">GULU BIBLE COMMUNITY CHURCH</p>
 							</div>
 							<hr />
-							<div className="text-lg text-white mt-10 flex flex-col">
+							<div className="text-sm text-white mt-10 flex flex-col">
 								{navbarApi.map((item) => (
 									<Link
 										key={item.name}
@@ -54,7 +54,7 @@ const MobileView = () => {
 
 							</div>
 
-							<div className="absolute bottom-1 text-white text-sm">
+							<div className="absolute bottom-1 left-4 text-white text-[10px]">
 								<p>All Rights Reserved. &copy;{currentYear} GBCC</p>
 							</div>
 						</div>

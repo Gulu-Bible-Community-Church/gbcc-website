@@ -24,7 +24,7 @@ const ChurchServiceCard = () => {
 
 	return (
 		<section
-			className="relative w-full lg:mt-4 mt-4"
+			className="relative w-full lg:pt-10 pt-6 lg:pb-10 pb-6 mt-0 bg-[#d1d5db]"
 		>
 			<div className="flex items-center justify-center">
 				<h1 className="text-[#162352] lg:text-4xl md:text-3xl text-xl font-bold ">

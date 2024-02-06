@@ -2,17 +2,11 @@ import churchImg from '@/assets/svg/church.svg'
 import { AboutDataApi } from '@/data/data'
 import { Link } from 'react-router-dom'
 
-const AboutUsCard = () => {
+const LivesteamCard = () => {
 	return (
-		<div className="lg:mt-10 mt-6">
-			<div className="flex  items-center justify-center">
-				<h1 className="text-[#162352] xl:text-5xl lg:text-4xl md:text-3xl text-xl font-bold ">
-					<span className="bg-[#D67314] rounded-l-2xl p-2 px-4 text-white ">ABOUT</span>
-					GBCC
-				</h1>
-			</div>
+		<div className="lg:mt-10 mt-6 mx-0">
 			{AboutDataApi && (
-				<div className='flex  lg:flex-row flex-col-reverse items-center lg:gap-10 gap-6 mx-4 lg:mt-10 mt-6'>
+				<div className='flex  flex-row-reverse justify-around gap-6 lg:mt-10 mt-6'>
 					<div>
 						<img src={churchImg} alt="church" className='xl:w-[650px] lg:w-[550px] md:w-[750px] w-[750px] ' />
 						<Link to={AboutDataApi.link} className='lg:hidden flex justify-center my-6 bg-[#162352]  text-center lg:w-32 w-full p-2 text-white rounded-md'>
@@ -39,4 +33,5 @@ const AboutUsCard = () => {
 		</div>
 	)
 }
-export default AboutUsCard
+
+export default LivesteamCard
