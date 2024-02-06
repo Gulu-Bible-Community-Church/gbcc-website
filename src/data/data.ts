@@ -103,6 +103,12 @@ export const AboutDataApi = {
 	visionDescription: "A changed community, freed from all kinds of oppression for holistic Godly progressive transformation with dignity",
 	link: "/about-us"
 }
+export const SermonData = {
+	title: "Latest Sermons",
+	theme: "stepping into a year of rest",
+	message: "In a rapidly changing world, where values and priorities often shift, the concept of a family that honors God stands as a beacon of hope and unwavering faith. The powerful message of our recent conference reminds us that within the bonds of family, we have the opportunity to create a sanctuary of love, faith, and grace that radiates God's light",
+	link: "/about-us"
+}
 
 export const Footer = {
 	name: "Footer"
