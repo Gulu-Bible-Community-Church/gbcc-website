@@ -1,76 +1,24 @@
-import { useState } from "react";
 import { AiOutlineMail, AiFillYoutube } from 'react-icons/ai';
 import { BiPhoneCall } from 'react-icons/bi';
 import { TiLocationOutline } from 'react-icons/ti';
-import { toast } from "react-toastify";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import bannerimg from '@/assets/images/banner1.jpg'
+import { SubmitHandler, useForm } from "react-hook-form";
+import { usePostContact } from '@/services/mutation';
+import { Contact } from '@/types/contact';
 
 const Contact = () => {
-  // Handle form input state
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [telephone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
-  const [subject, setSubject] = useState('');
-  const [isLoading, setIsLoading] = useState(false)
 
 
+  const { isPending: isLoading, mutate, } = usePostContact();
 
+  const { register, handleSubmit, formState } = useForm<Contact>();
+  const { errors } = formState;
 
-  const handleNewMessage = (e: any) => {
-    e.preventDefault()
-    try {
-
-      if (!name) {
-        toast.error('Please enter your name');
-        return; // Prevent form submission if any field is empty
-      }
-      if (!email) {
-        toast.error('Please enter your email address');
-        return; // Prevent form submission if any field is empty
-      }
-      if (!telephone) {
-        toast.error('Please enter your telephone');
-        return; // Prevent form submission if any field is empty
-      }
-      if (!message) {
-        toast.error('Please enter your message');
-        return; // Prevent form submission if any field is empty
-      }
-
-      const userData = {
-        email,
-        name,
-        telephone,
-        message,
-        subject,
-      }
-      // dispatch(PostNewMessage(userData));
-      toast.success(`Thanks ${email} for submitting your messages`)
-      setName("")
-      setEmail("")
-      setPhone("")
-      setMessage("")
-      setSubject("")
-    }
-    catch (error) {
-      console.log(error)
-    }
-    finally {
-      isLoading; // Set loading back to false when the request is done or when an error occurs
-    }
-  }
-  useEffect(() => {
-    // Set the title when the component mounts
-    document.title = 'Contact Us -- GBCC'; // Replace 'New Page Title' with your desired title
-    return () => {
-      // Reset the title when the component unmounts
-      document.title = 'Gulu Bible Community Church'; // Set the default title
-    };
-  }, []); // Empty dependency array ensures this effect runs only once (on mount)
-
-
+  const handlePostContactSubmit: SubmitHandler<Contact> = (data) => {
+    mutate(data);
+    // console.log("...", data)
+  };
   return (
     <>
       <section className=' '>
@@ -83,7 +31,7 @@ const Contact = () => {
             </p>
           </div>
         </div>
-        <img src='/contactbanner.jpg' alt="" className='md:h-[300px] h-[150px] w-full flex-1' />
+        <img src={bannerimg} alt="" className='md:h-[300px] h-[150px] w-full flex-1' />
       </section>
       <main className="flex flex-1 md:flex-row flex-col justify-evenly w-full space-x-2 -mt-1 bg-sky-50">
         <div className="md:mx-1 mx-3 md:mt-14 mt-8">
@@ -154,28 +102,26 @@ const Contact = () => {
 
           </div>
           <p className="px-10 flex text-start justify-start mt-3 text-sm font-normal"></p>
-          <form onSubmit={handleNewMessage}>
+          <form onSubmit={handleSubmit(handlePostContactSubmit)}>
             <div className="md:flex md:items-center w-full md:gap-10 gap-24 md:px-10 ">
               {/* name field */}
-              <div className="relative flex flex-col md:mb-auto mb-4">
-                <label htmlFor="name">Name: <span className="text-red-500">*</span></label>
+              <div className="relative flex flex-col md:mb-auto mb-4" >
+                <label htmlFor="name">Name: <span className="text-red-500 text-sm">* {""} {errors?.name?.message}</span></label>
                 <input
                   type="text"
-                  name="name"
-                  value={name}
-                  onChange={e => setName(e.target.value)}
+                  {...register("name", { required: "Please insert your name" })}
+                  disabled={isLoading}
                   id="name"
                   placeholder=""
                   className="bg-gray-200 rounded px-4 p-1 outline-none"
                 />
+
               </div>
               <div className="relative flex flex-col md:mb-auto mb-4  ">
-                <label htmlFor="email">Email: <span className="text-red-500">*</span></label>
+                <label htmlFor="email">Email: <span className="text-red-500">*{""} {errors?.email?.message}</span></label>
                 <input
                   type="email"
-                  name="email"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
+                  {...register("email", { required: "Please enter your email" })}
                   id="email"
                   placeholder=""
                   className="bg-gray-200 rounded px-4 p-1 outline-none"
@@ -185,24 +131,20 @@ const Contact = () => {
             <div className="md:flex items-center w-full gap-10 md:px-10 mt-4">
               {/* phone number field */}
               <div className="relative flex flex-col md:mb-auto mb-4">
-                <label htmlFor="phone">Phone: <span className="text-red-500">*</span></label>
+                <label htmlFor="phone">Phone: <span className="text-red-500">*{""} {errors?.telephone?.message}</span></label>
                 <input
                   type="text"
-                  name="phone"
-                  value={telephone}
-                  onChange={e => setPhone(e.target.value)}
-                  id="phone"
+                  {...register("telephone", { required: "Please enter phone number" })}
+                  id="telephone"
                   placeholder=""
                   className="bg-gray-200 rounded px-4 p-1 outline-none"
                 />
               </div>
               <div className="relative flex flex-col md:mb-auto mb-4">
-                <label htmlFor="subject">Subject:</label>
+                <label htmlFor="subject">Subject: <span className="text-gray-500">optional</span></label>
                 <input
                   type="text"
-                  name="subject"
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
+                  {...register("subject")}
                   id="subject"
                   placeholder=""
                   className="bg-gray-200 rounded px-4 p-1 outline-none"
@@ -210,11 +152,9 @@ const Contact = () => {
               </div>
             </div>
             <div className="md:mx-10 relative flex flex-col mt-4">
-              <label htmlFor="message">Message:</label>
+              <label htmlFor="message">Message: <span className="text-red-500">*{""} {errors?.message?.message}</span> </label>
               <textarea
-                name="message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                {...register("message", { required: "Please enter your message here" })}
                 id="message"
                 rows={8}
                 className="bg-gray-200 outline-none px-2 p-1"
@@ -227,15 +167,6 @@ const Contact = () => {
               >
                 {isLoading ? 'Processing...' : 'Send'}
               </button>
-
-
-              {/* <div>
-              <input
-                type="file"
-                onChange={(e) => setImage(e.target.files[0])}
-              ></input>
-              <button onClick={uploadImage}>Upload</button>
-              </div> */}
             </div>
           </form>
         </div>
