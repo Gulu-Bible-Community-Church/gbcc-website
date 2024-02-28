@@ -1,8 +1,27 @@
+import { useAppDispatch, useAppSelector } from "@/app/hooks"
 import FooterCard from "@/components/layout/FooterCard"
 import { currentYear } from "@/data/data"
+import { subscribeNow } from "@/features/subscribers/subscriberSlice";
+import { Subscribers } from "@/types/subscriber";
+import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 
 const Footer = () => {
+  const isLoading = useAppSelector(state => state.subscribers.loading);
+
+  const dispatch = useAppDispatch()
+
+  const { register, handleSubmit, formState, reset } = useForm<Subscribers>();
+  const { errors } = formState;
+
+  const handleSubscription: SubmitHandler<Subscribers> = (data, e: any) => {
+    e.preventDefault();
+    dispatch(subscribeNow(data));
+    toast.success(`Messages submitted successfully`);
+    reset();
+    console.log("...", data);
+  };
   return (
     <footer className=" bg-gradient-to-b from-[#162352] to-[#222020] text-white mt-10 " >
       <div className="flex lg:flex-row md:flex-row flex-col justify-between lg:items-center px-4 bg-[#222020] py-7 pb-4">
@@ -10,10 +29,18 @@ const Footer = () => {
           <span className="text-[#D67314] md:px-0 px-2">Subscribe</span>
           for our newsletter
         </h1>
-        <div className="flex lg:flex-row flex-col lg:px-10">
-          <input type="email" name="" placeholder="Enter your email address" className="text-gray-800 sm:w-72 w-auto sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 rounded px-2 outline-none	" />
-          <button type="submit" className="bg-[#D67314] hover:bg-[#e5bc5ddf] p-2 rounded-sm font-semibold md:w-auto w-full">SUBSCRIBE NOW</button>
-        </div>
+        <form className="flex lg:flex-row flex-col lg:px-10" onSubmit={handleSubmit(handleSubscription)}>
+          <input
+            type="email"
+            {...register("email", { required: "Please enter your email" })}
+            placeholder="Enter your email address"
+            className="text-gray-800 sm:w-72 w-auto sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 rounded px-2 outline-none	"
+
+          />
+          <p>{errors?.email?.message}</p>
+          <button type="submit" className="bg-[#D67314] hover:bg-[#e5bc5ddf] p-2 rounded-sm font-semibold md:w-auto w-full">
+            {isLoading ? 'subscribing' : 'SUBSCRIBE NOW'}</button>
+        </form>
       </div>
       <FooterCard />
       <div className=" bg-[#162352] py-2">

@@ -4,20 +4,26 @@ import { TiLocationOutline } from 'react-icons/ti';
 import { Link } from "react-router-dom";
 import bannerimg from '@/assets/images/banner1.jpg'
 import { SubmitHandler, useForm } from "react-hook-form";
-import { usePostContact } from '@/services/mutation';
 import { Contact } from '@/types/contact';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { createNewContact } from '@/features/contact/contactSlice';
+import toast from 'react-hot-toast';
 
-const Contact = () => {
+const ContactPage = () => {
 
 
-  const { isPending: isLoading, mutate, } = usePostContact();
+  const isLoading = useAppSelector(state => state.contacts.loading)
 
-  const { register, handleSubmit, formState } = useForm<Contact>();
+  const dispatch = useAppDispatch()
+
+  const { register, handleSubmit, formState, reset } = useForm<Contact>();
   const { errors } = formState;
 
   const handlePostContactSubmit: SubmitHandler<Contact> = (data) => {
-    mutate(data);
-    // console.log("...", data)
+    dispatch(createNewContact(data));
+    toast.success(`Messages submitted successfully`);
+    reset();
+    console.log("...", data);
   };
   return (
     <>
@@ -175,4 +181,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactPage;

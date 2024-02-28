@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from './layout/Layout';
-import { AboutUs, ChurchMinistries, ChurchServices, Contact, Dashboard, Donation, Insights, Leadership, NotFound, UpcomingEvents, WatchSermons } from './pages';
+import { AboutUs, ChurchMinistries, ChurchServices, ContactPage, Dashboard, Donation, Insights, Leadership, NotFound, SingleInsight, UpcomingEvents, WatchSermons } from './pages';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast'
 
@@ -29,8 +29,9 @@ function App() {
             <Route path="church-ministries" element={<ChurchMinistries />} />
             <Route path="upcoming-events" element={<UpcomingEvents />} />
             <Route path="insights" element={<Insights />} />
+            <Route path="insights/:id" element={<SingleInsight />} />
             <Route path="watch-sermons" element={<WatchSermons />} />
-            <Route path="contact-us" element={<Contact />} />
+            <Route path="contact-us" element={<ContactPage />} />
             <Route path="give-to-gbcc" element={<Donation />} />
 
           </Route>

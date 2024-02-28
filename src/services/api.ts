@@ -15,3 +15,14 @@ export const postContact = async (data: Contact) => {
 		throw error; // Re-throw the error to be handled by the caller
 	}
 };
+
+export const getSermonData = async () => {
+	try {
+		const response = await axiosInstance.get("/sermons");
+		console.log("Response:", response.data);
+		return response.data;
+	} catch (error) {
+		console.error("Response Error:", error);
+		throw error; // Re-throw the error to be handled by the caller
+	}
+};
