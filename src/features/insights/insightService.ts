@@ -15,7 +15,21 @@ const getInsightData = async () => {
     }
 };
 
+const getInsightById = async (insightId: string) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/insights/${insightId}`)
+            .then(response => response.json())
+
+        // Assuming the API response contains the data of the single insight
+        return response.data;
+    } catch (error) {
+        console.error("Get Insight Data Error:", error);
+        throw error;
+    }
+};
+
 const insightsService = {
-    getInsightData
+    getInsightData,
+    getInsightById
 }
 export default insightsService;

@@ -23,7 +23,8 @@ export const subscribeNow = createAsyncThunk(
 	async (data: Subscribers) => {
 		try {
 			const response = await subscriberService.createSubscription(data);
-			return response.data; // Assuming the API response contains the created sermon data
+			return response.data;
+			console.log(response.data)// Assuming the API response contains the created sermon data
 		} catch (error) {
 			throw error;
 		}

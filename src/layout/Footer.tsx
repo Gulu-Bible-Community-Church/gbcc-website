@@ -15,18 +15,27 @@ const Footer = () => {
   const { register, handleSubmit, formState, reset } = useForm<Subscribers>();
   const { errors } = formState;
 
-  const handleSubscription: SubmitHandler<Subscribers> = (data, e: any) => {
+  const handleSubscription: SubmitHandler<Subscribers> = async (data, e: any) => {
     e.preventDefault();
-    dispatch(subscribeNow(data));
-    toast.success(`Messages submitted successfully`);
-    reset();
-    console.log("...", data);
+    try {
+      await dispatch(subscribeNow(data));
+      toast.success(`Subscription successful`);
+      reset();
+      // console.log("Subscription data:", data);
+    } catch (error) {
+      // if (error?.message === 'Subscriber with this email already exists') {
+      //     toast.error('Subscription failed: Subscriber with this email already exists');
+      // } else {
+      //     toast.error('Subscription failed: Unknown error occurred');
+      // }
+      console.error("Subscription Error:", error);
+    }
   };
   return (
     <footer className=" bg-gradient-to-b from-[#162352] to-[#222020] text-white mt-10 " >
       <div className="flex lg:flex-row md:flex-row flex-col justify-between lg:items-center px-4 bg-[#222020] py-7 pb-4">
-        <h1 className="lg:text-4xl md:text-3xl text-2xl md:mb-0 mb-6 lg:leading-normal font-semibold md:w-2/5 w-full md:text-start text-center">
-          <span className="text-[#D67314] md:px-0 px-2">Subscribe</span>
+        <h1 className="lg:text-4xl md:text-3xl text-2xl md:mb-0 mb-6 lg:leading-normal font-semibold md:w-2/5 w-full md:text-start text-center ">
+          <span className="text-[#D67314] md:px-0 ">Subscribe {""}</span>
           for our newsletter
         </h1>
         <form className="flex lg:flex-row flex-col lg:px-10" onSubmit={handleSubmit(handleSubscription)}>

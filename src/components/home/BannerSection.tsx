@@ -1,19 +1,30 @@
+import { useAppSelector } from '@/app/hooks'
 import BannerImg from '@/assets/svg/martin.svg'
+import SkeletonImage from '@/utils/SkeletonImage'
 import { motion } from 'framer-motion'
 
 const BannerSection = () => {
+
+	const loading = useAppSelector(state => state.insights.loading)
+
+
 	return (
 		<section className="relative -z-10 lg:mx-0 mx-4 flex flex-row items-center h-auto w-full lg:pt-28 md:pt-24 pt-24">
 			{/* left section */}
 			<div className='relative z-10 w-1/2'>
-				<motion.img
-					initial={{ opacity: 0, }}
-					animate={{ x: 30, opacity: 1 }}
-					transition={{ ease: "easeOut", duration: 4, delay: 1 }}
-					src={BannerImg}
-					alt="#yearofrest"
-					className='lg:w-[700px] md:w-[500px] w-[250px]'
-				/>
+				{
+					loading ? <SkeletonImage /> : (
+						<motion.img
+							initial={{ opacity: 0, }}
+							animate={{ x: 30, opacity: 1 }}
+							transition={{ ease: "easeOut", duration: 4, delay: 1 }}
+							src={BannerImg}
+							alt="#yearofrest"
+							className='lg:w-[700px] md:w-[500px] w-[250px]'
+						/>
+					)
+				}
+
 				<div className='absolute lg:top-24 md:top-24 top-8 lg:left-10 md:left-2 left-2 lg:w-52 md:w-52 w-16 lg:h-52 md:h-52 h-16 bg-[#162352] rounded-full -z-10'></div>
 				<div className='absolute lg:top-24 md:top-24 top-10 lg:-right-24 md:right-0 right-4 xl:w-96 lg:w-80 md:w-40 w-16 xl:h-96 lg:h-80 md:h-40 h-16 bg-[#D67314] rounded-full -z-10'></div>
 

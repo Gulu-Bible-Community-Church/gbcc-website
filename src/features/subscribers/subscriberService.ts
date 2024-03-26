@@ -14,10 +14,13 @@ const createSubscription = async (data: Subscribers) => {
         });
 
         if (!response.ok) {
+            if (response.status === 409) { // Check if status is Conflict (409)
+                throw new Error('Subscriber with this email already exists');
+            }
             throw new Error('Failed to subscribe');
         }
 
-        return response.json(); // Return the created sermon data
+        return response.json(); // Return the created subscription data
     } catch (error) {
         console.error("Create Subscribe Error:", error);
         throw error;

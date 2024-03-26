@@ -1,13 +1,12 @@
-import { AiOutlineMail, AiFillYoutube } from 'react-icons/ai';
+import { AiOutlineMail, AiFillYoutube, AiFillFacebook, AiFillTwitterCircle, AiFillInstagram } from 'react-icons/ai';
 import { BiPhoneCall } from 'react-icons/bi';
 import { TiLocationOutline } from 'react-icons/ti';
-import { Link } from "react-router-dom";
-import bannerimg from '@/assets/images/banner1.jpg'
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Contact } from '@/types/contact';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { createNewContact } from '@/features/contact/contactSlice';
 import toast from 'react-hot-toast';
+import { useEffect } from 'react';
 
 const ContactPage = () => {
 
@@ -19,28 +18,70 @@ const ContactPage = () => {
   const { register, handleSubmit, formState, reset } = useForm<Contact>();
   const { errors } = formState;
 
-  const handlePostContactSubmit: SubmitHandler<Contact> = (data) => {
-    dispatch(createNewContact(data));
-    toast.success(`Messages submitted successfully`);
-    reset();
-    console.log("...", data);
+  const handlePostContactSubmit: SubmitHandler<Contact> = async (data) => {
+    try {
+      await dispatch(createNewContact(data));
+      await reset();
+      await toast.success(`Messages submitted successfully`);
+      // console.log("...", data);
+    }
+    catch (err) {
+      console.error(err);
+    }
   };
+
+  useEffect(() => {
+    // Set the title when the component mounts
+    document.title = 'Contact Us || GBCC'; // Replace 'New Page Title' with your desired title
+    return () => {
+      // Reset the title when the component unmounts
+      document.title = 'Gulu Bible Community Church'; // Set the default title
+    };
+  }, []); // Empty dependency array ensures this effect runs only once (on mount)
+
+  useEffect(() => {
+    // Dynamically set Open Graph metadata when the component mounts
+    const metaTags = [
+      { property: 'og:title', content: 'Contact Us || GBCC' }, // Replace with your page title
+      { property: 'og:description', content: "Get in touch for any questions about our church, volunteering opportunities, or ways to get involved. We're here to help and welcome you into our church family" }, // Replace with your description
+      { property: 'og:image', content: '/contact.jpg' }, // Replace with the URL of the image to display
+      { property: 'og:url', content: window.location.href }, // URL of the current page
+    ];
+
+    const head = document.querySelector('head');
+    metaTags.forEach((tag) => {
+      const metaTag = document.createElement('meta');
+      metaTag.setAttribute('property', tag.property);
+      metaTag.setAttribute('content', tag.content);
+      head?.appendChild(metaTag);
+    });
+
+    // Clean up when the component unmounts
+    return () => {
+      metaTags.forEach((tag) => {
+        const existingTag = document.querySelector(`meta[property="${tag.property}"]`);
+        if (existingTag) {
+          head?.removeChild(existingTag);
+        }
+      });
+    };
+  }, []);
   return (
     <>
-      <section className=' '>
+      <section className='pt-10 '>
         <div className="absolute top-0 left-0 bottom-0 right-0">
-          <div className="px-2 text-black z-[2] md:mt-48 mt-24 flex items-center flex-col">
-            <h1 className="md:text-4xl text-xl font-semibold shadow-white">Reach Us</h1>
+          <div className="px-2 text-black z-[2] flex items-center flex-col">
+            {/* <h1 className="md:text-4xl text-xl font-semibold shadow-white">Reach Us</h1>
             <p className="md:text-md text-xs">
               <Link to='/' className='hover:font-bold underline'>Home</Link>
               /Contact Us
-            </p>
+            </p> */}
           </div>
         </div>
-        <img src={bannerimg} alt="" className='md:h-[300px] h-[150px] w-full flex-1' />
+        <img src='/contact.jpg' alt="" className='md:h-[300px] h-[150px] w-full flex-1' />
       </section>
-      <main className="flex flex-1 md:flex-row flex-col justify-evenly w-full space-x-2 -mt-1 bg-sky-50">
-        <div className="md:mx-1 mx-3 md:mt-14 mt-8">
+      <main className="flex flex-1 lg:flex-row  flex-col justify-evenly w-full space-x-2 -mt-1 bg-sky-50">
+        <div className="lg:mx-1 mx-3 md:mt-14 mt-8">
           {/* Email Address */}
           <div className="bg-slate-200 px-4 p-4 flex items-center gap-2 mb-10">
             {/* icon */}
@@ -53,20 +94,55 @@ const ContactPage = () => {
               <a href="mailto:leadpastor@gulubcc.org" className="relative "> <span className="font-bold">Overseer</span> leadpastor@gulubcc.org </a>
               <a href="mailto:administrator@gulubcc.org" className="relative "><span className="font-bold">Admin</span> administrator@gulubcc.org </a>
               <a href="mailto:finance@gulubcc.org" className="relative "> <span className="font-bold">Finance Department</span>finance@gulubcc.org </a>
-              <a href="mailto:media@gulubcc.org" className="relative "> <span className="font-bold">Media & IT </span>media@gulubcc.org </a>
+              <a href="mailto:media@gulubcc.org" className="relative "> <span className="font-bold">Media & IT </span>ict.media@gulubcc.org </a>
               <a href="mailto:mission@gulubcc.org" className="relative "> <span className="font-bold">Mission </span>mission@gulubcc.org </a>
             </div>
           </div>
           {/* Phone Number */}
-          <div className="bg-slate-200 px-4 p-4 flex items-center gap-2 mb-10">
-            {/* icon */}
-            <div>
-              <AiFillYoutube size={30} color='red' />
+          <div className="bg-slate-200 px-4 p-4 flex flex-col  gap-2 mb-10">
+            <div className='flex items-center'>
+              {/* icon */}
+              <div className=''>
+                <AiFillFacebook color='blue' size={60} />
+              </div>
+              {/* list */}
+              <div className='text-sm'>
+                <h1>Follow Us</h1>
+                <a href="https://www.facebook.com/100069158540592/posts/731501205831824/?mibextid=rS40aB7S9Ucbxw6v" target="_blank" className="relative cursor-pointer text-black font-semibold">Facebook Account</a>
+              </div>
             </div>
-            {/* list */}
-            <div>
-              <h1>Subscribe Our Youtube Channel:</h1>
-              <a href="https://www.youtube.com/@gulubiblecommunitychurch7832" target="_blank" className="relative cursor-pointer text-black font-semibold">Gulu Bible Community Church</a>
+            <div className='flex items-center'>
+              {/* icon */}
+              <div className=''>
+                <AiFillTwitterCircle color='blue' size={60} />
+              </div>
+              {/* list */}
+              <div className='text-sm'>
+                <h1>Follow Us on:</h1>
+                <a href="https://twitter.com/gulubible/status/1763419415356309952?t=KL0H6mzCfjzoyFk7KEiQ0w&s=19" target="_blank" className="relative cursor-pointer text-black font-semibold">X app (Twitter App)</a>
+              </div>
+            </div>
+            <div className='flex items-center'>
+              {/* icon */}
+              <div className=''>
+                <AiFillInstagram color='orangered' size={60} />
+              </div>
+              {/* list */}
+              <div className='text-sm'>
+                <h1>Follow Us on:</h1>
+                <a href="https://www.instagram.com/gulubiblecommunitychurch/?igsh=MzltM21keXU5cnF6" target="_blank" className="relative cursor-pointer text-black font-semibold">Instagram</a>
+              </div>
+            </div>
+            <div className='flex items-center'>
+              {/* icon */}
+              <div className=''>
+                <AiFillYoutube color='red' size={60} />
+              </div>
+              {/* list */}
+              <div className='text-sm'>
+                <h1>Subscribe Our Youtube Channel:</h1>
+                <a href="https://www.youtube.com/@gulubiblecommunitychurch7832" target="_blank" className="relative cursor-pointer text-black font-semibold">Gulu Bible Community Church</a>
+              </div>
             </div>
           </div>
           {/* Phone Number */}
@@ -111,7 +187,7 @@ const ContactPage = () => {
           <form onSubmit={handleSubmit(handlePostContactSubmit)}>
             <div className="md:flex md:items-center w-full md:gap-10 gap-24 md:px-10 ">
               {/* name field */}
-              <div className="relative flex flex-col md:mb-auto mb-4" >
+              <div className="relative flex flex-col md:mb-auto mb-4 md:w-1/2" >
                 <label htmlFor="name">Name: <span className="text-red-500 text-sm">* {""} {errors?.name?.message}</span></label>
                 <input
                   type="text"
@@ -123,7 +199,7 @@ const ContactPage = () => {
                 />
 
               </div>
-              <div className="relative flex flex-col md:mb-auto mb-4  ">
+              <div className="relative flex flex-col md:mb-auto mb-4  md:w-1/2">
                 <label htmlFor="email">Email: <span className="text-red-500">*{""} {errors?.email?.message}</span></label>
                 <input
                   type="email"
@@ -136,7 +212,7 @@ const ContactPage = () => {
             </div>
             <div className="md:flex items-center w-full gap-10 md:px-10 mt-4">
               {/* phone number field */}
-              <div className="relative flex flex-col md:mb-auto mb-4">
+              <div className="relative flex flex-col md:mb-auto mb-4 md:w-1/2">
                 <label htmlFor="phone">Phone: <span className="text-red-500">*{""} {errors?.telephone?.message}</span></label>
                 <input
                   type="text"
@@ -146,7 +222,7 @@ const ContactPage = () => {
                   className="bg-gray-200 rounded px-4 p-1 outline-none"
                 />
               </div>
-              <div className="relative flex flex-col md:mb-auto mb-4">
+              <div className="relative flex flex-col md:mb-auto mb-4 md:w-1/2">
                 <label htmlFor="subject">Subject: <span className="text-gray-500">optional</span></label>
                 <input
                   type="text"

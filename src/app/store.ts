@@ -3,13 +3,15 @@ import contactReducer from '@/features/contact/contactSlice'
 import sermonReducer from '@/features/sermons/sermonSlice'
 import subscriberReducer from '@/features/subscribers/subscriberSlice'
 import insightReducer from '@/features/insights/insightSlice'
+import upcomingEventReducer from '@/features/upcoming-events/upcomingEventSlice'
 
 export const store = configureStore({
 	reducer: {
 		contacts: contactReducer,
 		sermons: sermonReducer,
 		subscribers: subscriberReducer,
-		insights: insightReducer
+		insights: insightReducer,
+		events: upcomingEventReducer
 	},
 })
 

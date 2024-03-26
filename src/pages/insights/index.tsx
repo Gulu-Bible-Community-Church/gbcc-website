@@ -4,10 +4,10 @@ import InsightSection from "@/components/insight/InsightSection"
 
 const Insights = () => {
   return (
-	<div>
-    <InsightBanner />
-    <InsightSection />
-  </div>
+    <div className="relative z-0">
+      <InsightBanner />
+      <InsightSection />
+    </div>
   )
 }
 

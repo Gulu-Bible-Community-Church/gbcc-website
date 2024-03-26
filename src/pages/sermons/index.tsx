@@ -4,12 +4,11 @@ import SermonSection from "./SermonSection"
 
 const WatchSermons = () => {
 
- 
+
   return (
     <div>
       <SermonBanner />
-      <SermonSection
-      />
+      <SermonSection />
     </div>
   )
 }

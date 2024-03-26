@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Insight } from "@/types/Insight";
-import insightsService from "./insightService";
+import insightsService from "./commentService";
 
 export interface InsightState {
 	data: Insight[] | null,

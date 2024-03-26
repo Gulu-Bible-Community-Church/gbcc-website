@@ -18,7 +18,7 @@ const LivesteamCard = () => {
 						<div className='h-2 lg:w-64 w-full bg-[#D67314]'></div>
 						<div className='text-[#162352] lg:w-[850px] '>
 							<h1 className=' font-bold xl:text-4xl lg:text-3xl md:text-xl text-2xl lg:text-start text-center uppercase'>{SermonData.theme}</h1>
-							<p className='pt-4 pb-4 lg:px-0 px-4'>{SermonData.message}</p>
+							<p className='pt-4 pb-4  lg:text-base text-[14px]'>{SermonData.message}</p>
 						</div>
 						<Link to={SermonData.link} className='hidden lg:flex  bg-[#162352]  text-center lg:w-32 w-full p-2 text-white rounded-md'>
 							Watch Now

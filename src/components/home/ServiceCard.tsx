@@ -14,7 +14,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service_name, language, start
 	};
 	return (
 		<section
-			className={`lg:w-81 w-full lg:h-[200px] h-[180px]  rounded-lg p-10 text-white lg:text-xl text-lg`}
+			className={`lg:w-81 md:w-full w-42 lg:h-[200px] md:h-[180px] h-[120px]  rounded-lg lg:p-10 md:p-10 p-1 text-white lg:text-xl text-lg`}
 			style={{ fontFamily: 'Inknut Antiqua', fontWeight: 800, ...gradientStyle }}
 		>
 			<h1 className="text-center font-bold lg:text-base md:text-[16px] text-[14px]">{service_name}</h1>

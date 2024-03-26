@@ -5,6 +5,8 @@ import { SkeletonCard } from "@/utils/SkeletonCard"
 import InsightBlog from "../insights/InsightBlog"
 
 
+
+
 const InsightSection = () => {
 	const dispatch = useAppDispatch()
 	// const contacts = useAppSelector(state => state.contacts.data)
@@ -22,13 +24,18 @@ const InsightSection = () => {
 		<>
 			{loading ? (
 				<div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-5 lg:gap-10 md:gap-4 gap-3">
-					{insights?.map((event) => (
-						<SkeletonCard key={event.id} />
-					))}
+					<SkeletonCard />
+					<SkeletonCard />
+					<SkeletonCard />
+					<SkeletonCard />
+					<SkeletonCard />
+					<SkeletonCard />
+					<SkeletonCard />
+					<SkeletonCard />
 
 				</div>
 			) : (
-				<div className="grid items-center lg:grid-cols-4 mt-10 mx-4 gap-6">
+				<div className=" grid items-center lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-10 mx-4 gap-6">
 					{insights?.map((event) => (
 						<InsightBlog
 							key={event.id}
@@ -38,6 +45,7 @@ const InsightSection = () => {
 							message={event.message}
 							category={event.category}
 							comments={event.comments}
+							loading={loading}
 						/>
 					))}
 				</div>

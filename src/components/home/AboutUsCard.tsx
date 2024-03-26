@@ -1,8 +1,12 @@
+import { useAppSelector } from '@/app/hooks'
 import churchImg from '@/assets/svg/church.svg'
 import { AboutDataApi } from '@/data/data'
+import SkeletonLargeImage from '@/utils/SkeletonLargeImage'
 import { Link } from 'react-router-dom'
 
 const AboutUsCard = () => {
+	const loading = useAppSelector(state => state.insights.loading)
+
 	return (
 		<div className="lg:mt-10 mt-6">
 			<div className="flex  items-center justify-center">
@@ -14,7 +18,9 @@ const AboutUsCard = () => {
 			{AboutDataApi && (
 				<div className='flex  lg:flex-row flex-col-reverse items-center lg:gap-10 gap-6 mx-4 lg:mt-10 mt-6'>
 					<div>
-						<img src={churchImg} alt="church" className='xl:w-[650px] lg:w-[550px] md:w-[750px] w-[750px] ' />
+						{loading ? <SkeletonLargeImage /> : (
+							<img src={churchImg} alt="church" className='xl:w-[650px] lg:w-[550px] md:w-[750px] w-[750px] ' />
+						)}
 						<Link to={AboutDataApi.link} className='lg:hidden flex justify-center my-6 bg-[#162352]  text-center lg:w-32 w-full p-2 text-white rounded-md'>
 							<p className='text-center'>Discover More</p>
 						</Link>
@@ -24,11 +30,11 @@ const AboutUsCard = () => {
 						<h1 className='font-bold text-[#162352] xl:text-3xl lg:text-xl text-lg lg:text-start text-center'>{AboutDataApi.title}</h1>
 						<div className='text-[#162352]'>
 							<h1 className='font-bold xl:text-2xl text-lg'>{AboutDataApi.mission}</h1>
-							<p>{AboutDataApi.missionDescription}</p>
+							<p className='lg:text-base text-[14px]'>{AboutDataApi.missionDescription}</p>
 						</div>
 						<div className='text-[#162352]'>
 							<h1 className='font-bold xl:text-2xl text-lg'>{AboutDataApi.vision}</h1>
-							<p>{AboutDataApi.visionDescription}</p>
+							<p className='lg:text-base text-[14px]'>{AboutDataApi.visionDescription}</p>
 						</div>
 						<Link to={AboutDataApi.link} className='hidden lg:flex  bg-[#162352]  text-center lg:w-32 w-full p-2 text-white rounded-md'>
 							Discover More
