@@ -33,7 +33,7 @@ const ChurchServiceCard = () => {
 				</h1>
 			</div>
 			<motion.div
-				className="mx-4 grid gap-4 items-center justify-center lg:grid-cols-3 md:grid-cols-2 grid-cols-2 mt-10"
+				className="lg:mx-4 mx-2 grid gap-4 items-center justify-between lg:grid-cols-3 md:grid-cols-2 grid-cols-2 mt-10"
 				variants={containerVariants}
 			>
 				{churchServiceApi.map((item) => (

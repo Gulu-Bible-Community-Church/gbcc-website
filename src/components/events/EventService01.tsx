@@ -7,12 +7,12 @@ interface Props {
 	image?: string
 	message?: string
 	category?: string
-	date?: string
+	event_date?: string
 	loading?: boolean
 
 }
 
-const EventService01 = ({ loading, name, message, image, category, date }: Props): ReactElement => {
+const EventService01 = ({ loading, name, message, image, category, event_date }: Props): ReactElement => {
 	return (
 		<div
 			className="relative   shadow-2xl shadow-black  lg:h-[500px] h-[480px] bg-white cursor-pointer rounded-lg z-40 overflow-hidden"
@@ -35,7 +35,7 @@ const EventService01 = ({ loading, name, message, image, category, date }: Props
 				<div className="bg-[#0e172c] rounded-lg px-2 p-2 w-auto mx-4 text-white uppercase absolute  top-4 z-10">
 
 					{name}
-					<span>{date}</span>
+					<span>{event_date}</span>
 				</div>
 			)}
 			{loading ? <div className="bg-gray-300 rounded-sm px-2 mx-1 p-2 h-[200px]  mt-2 pt-4 animate-pulse">{""}</div> : (

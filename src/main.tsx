@@ -7,6 +7,7 @@ import { store } from './app/store.ts'
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
 import ru from 'javascript-time-ago/locale/ru.json'
+import { HelmetProvider } from 'react-helmet-async'
 
 
 TimeAgo.addDefaultLocale(en)
@@ -15,7 +16,9 @@ TimeAgo.addLocale(ru)
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
     </Provider>
   </BrowserRouter>,
 )

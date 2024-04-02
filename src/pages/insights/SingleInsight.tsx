@@ -7,14 +7,30 @@ import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import ReactTimeAgo from 'react-time-ago'
 
+interface Comment {
+  id: string;
+  createdAt: string;
+  name: string;
+  message: string;
+}
+
+interface Insight {
+  id: string;
+  name: string;
+  message: string;
+  category: string;
+  images: string;
+  likes: string;
+  comments: Comment[]; // Define the comments property here
+}
 
 
 const SingleInsight = () => {
   const [name, setName] = useState("")
   const [message, setMessage] = useState("")
-  const [insight, setInsight] = useState({})
+  const [insight, setInsight] = useState<Insight>({} as Insight);
   const [loading, setLoading] = useState<boolean>(true);
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<Comment[]>([]);
   const { id } = useParams(); // Retrieve the id parameter from the URL
 
   useEffect(() => {
@@ -45,9 +61,8 @@ const SingleInsight = () => {
   console.log(insight)
 
 
-  const numOfComments: number = insight.comments?.length;
-  const comment = insight?.comments;
-  console.log('comments', comment);
+  const numOfComments: number = insight.comments?.length || 0; // Ensure insight.comments is defined before accessing its length
+  console.log('comments', comments);
 
 
   const handlePostComment = async (e: any) => {

@@ -5,5 +5,5 @@ export interface Events {
 	category?: string;
 	message?: string;
 	images?: string;
-	date?: number;
+	event_date?: string;
 }

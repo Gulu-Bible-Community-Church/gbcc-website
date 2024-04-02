@@ -1,6 +1,5 @@
 import { useAppSelector } from '@/app/hooks'
 import BannerImg from '@/assets/svg/martin.svg'
-import SkeletonImage from '@/utils/SkeletonImage'
 import { motion } from 'framer-motion'
 
 const BannerSection = () => {
@@ -13,7 +12,7 @@ const BannerSection = () => {
 			{/* left section */}
 			<div className='relative z-10 w-1/2'>
 				{
-					loading ? <SkeletonImage /> : (
+					loading ? <div className='lg:h-[525px] h-[200px] w-[350px] '> </div> : (
 						<motion.img
 							initial={{ opacity: 0, }}
 							animate={{ x: 30, opacity: 1 }}

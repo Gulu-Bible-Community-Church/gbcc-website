@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/app/hooks'
-import churchImg from '@/assets/svg/church.svg'
+import churchImg from '/finalbanner.jpg'
 import { AboutDataApi } from '@/data/data'
 import SkeletonLargeImage from '@/utils/SkeletonLargeImage'
 import { Link } from 'react-router-dom'
@@ -19,7 +19,7 @@ const AboutUsCard = () => {
 				<div className='flex  lg:flex-row flex-col-reverse items-center lg:gap-10 gap-6 mx-4 lg:mt-10 mt-6'>
 					<div>
 						{loading ? <SkeletonLargeImage /> : (
-							<img src={churchImg} alt="church" className='xl:w-[650px] lg:w-[550px] md:w-[750px] w-[750px] ' />
+							<img src={churchImg} alt="church" className='xl:w-[650px] lg:w-[550px] md:w-[750px] w-[750px] rounded-lg' />
 						)}
 						<Link to={AboutDataApi.link} className='lg:hidden flex justify-center my-6 bg-[#162352]  text-center lg:w-32 w-full p-2 text-white rounded-md'>
 							<p className='text-center'>Discover More</p>

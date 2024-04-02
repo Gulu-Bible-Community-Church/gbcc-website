@@ -1,6 +1,4 @@
 import SkeletonBlogImage from '@/utils/SkeletonBlogImage'
-import SkeletonImage from '@/utils/SkeletonImage'
-import SkeletonLargeImage from '@/utils/SkeletonLargeImage'
 import { ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 import TextTruncate from 'react-text-truncate'

@@ -39,33 +39,7 @@ const ContactPage = () => {
     };
   }, []); // Empty dependency array ensures this effect runs only once (on mount)
 
-  useEffect(() => {
-    // Dynamically set Open Graph metadata when the component mounts
-    const metaTags = [
-      { property: 'og:title', content: 'Contact Us || GBCC' }, // Replace with your page title
-      { property: 'og:description', content: "Get in touch for any questions about our church, volunteering opportunities, or ways to get involved. We're here to help and welcome you into our church family" }, // Replace with your description
-      { property: 'og:image', content: '/contact.jpg' }, // Replace with the URL of the image to display
-      { property: 'og:url', content: window.location.href }, // URL of the current page
-    ];
 
-    const head = document.querySelector('head');
-    metaTags.forEach((tag) => {
-      const metaTag = document.createElement('meta');
-      metaTag.setAttribute('property', tag.property);
-      metaTag.setAttribute('content', tag.content);
-      head?.appendChild(metaTag);
-    });
-
-    // Clean up when the component unmounts
-    return () => {
-      metaTags.forEach((tag) => {
-        const existingTag = document.querySelector(`meta[property="${tag.property}"]`);
-        if (existingTag) {
-          head?.removeChild(existingTag);
-        }
-      });
-    };
-  }, []);
   return (
     <>
       <section className='pt-10 '>

@@ -48,7 +48,7 @@ const EventSection = () => {
 									name={event.name}
 									image={event.images}
 									category={event.category}
-									date={event.date}
+									event_date={event.event_date}
 									loading={loading}
 								/>
 							))}
