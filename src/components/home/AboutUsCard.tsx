@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/app/hooks'
-import churchImg from '/finalbanner.jpg'
+import churchImg from '../../assets/images/finalbanner.jpg'
 import { AboutDataApi } from '@/data/data'
 import SkeletonLargeImage from '@/utils/SkeletonLargeImage'
 import { Link } from 'react-router-dom'

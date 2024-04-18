@@ -1,7 +1,7 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from './layout/Layout';
-import { AboutUs, ChurchMinistries, ChurchServices, ContactPage, Dashboard, Donation, Insights, Leadership, NotFound, SingleInsight, UpcomingEvents, WatchSermons } from './pages';
+import { AboutUs, ChurchMinistries, ChurchServices, ContactPage, Dashboard, Donation, Insights, Leadership, SingleInsight, UpcomingEvents, WatchSermons } from './pages';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast'
 
@@ -21,8 +21,8 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route element={<Layout />}>
-            <Route index element={<Navigate replace to="home" />} />
-            <Route path='home' element={<Dashboard />} />
+            {/* <Route index element={<Navigate replace to="" />} /> */}
+            <Route path="" element={<Dashboard />} />
             <Route path="about-us" element={<AboutUs />} />
             <Route path="our-leadership" element={<Leadership />} />
             <Route path="church-services" element={<ChurchServices />} />
@@ -36,7 +36,7 @@ function App() {
 
           </Route>
           {/* route not put */}
-          <Route path='*' element={<NotFound />} />
+          {/* <Route path='*' element={<NotFound />} /> */}
         </Routes>
         <Toaster
           position='top-center'

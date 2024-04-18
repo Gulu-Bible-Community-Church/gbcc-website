@@ -30,7 +30,7 @@ const MobileView = () => {
 			{
 				showSidebar && (
 					<div
-						className={`-top-4 left-0  right-16  rounded mt-2 bg-[#162352]    p-1 fixed h-full z-20  ease-in-out duration-300 ${showSidebar ? "translate-x-0 " : "translate-x-full"
+						className={`-top-4 left-0 animate-in  right-16  rounded mt-2 bg-[#162352] h-screen    p-1 fixed z-20  ease-in-out duration-300 ${showSidebar ? "translate-x-0 duration-100 ease-in-out " : "translate-x-full"
 							}`}
 					>
 						<div className="">
@@ -39,14 +39,15 @@ const MobileView = () => {
 								<p className="text-white font-semibold text-sm">GULU BIBLE COMMUNITY CHURCH</p>
 							</div>
 							<hr />
-							<div className="text-sm text-white mt-10 flex flex-col">
+							<div className="text-sm text-white mt-4 flex flex-col gap-2 p-0">
 								{navbarApi.map((item) => (
 									<Link
 										key={item.name}
 										to={item.link}
 										onClick={() => setShowSidebar(!showSidebar)}
+										className="bg-[#D67314] p-2 text-lg rounded-sm border-l-8 border-white"
 									>
-										<span className="w-10 h-10 border-l-4  border-[#D67314] px-1"></span>
+										
 										{item.name}
 									</Link>
 								))}
@@ -54,7 +55,7 @@ const MobileView = () => {
 
 							</div>
 
-							<div className="absolute bottom-1 left-4 text-white text-[10px]">
+							<div className="absolute bottom-2 left-16 text-white text-[10px]">
 								<p>All Rights Reserved. &copy;{currentYear} GBCC</p>
 							</div>
 						</div>

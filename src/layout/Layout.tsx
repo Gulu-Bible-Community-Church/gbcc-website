@@ -4,13 +4,13 @@ import Footer from "./Footer"
 
 
 const Layout = () => {
-  return (
-	<div className="h-screen ">
-		<Navbar />
-		<Outlet />
-		<Footer />
-	</div>
-  )
+	return (
+		<div className="h-full ">
+			<Navbar />
+			<Outlet />
+			<Footer />
+		</div>
+	)
 }
 
 export default Layout
