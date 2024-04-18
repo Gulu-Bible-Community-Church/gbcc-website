@@ -32,6 +32,7 @@ const Dashboard = () => {
         {/* <EventCard /> */}
         <LivesteamCard />
         <BlogSection />
+        <p>Thanks</p>
       </main>
     </>
   )
